@@ -1,0 +1,35 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
+	id 'java'
+    id 'idea'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.looboo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+//	mavenCentral()
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+    }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// https://mvnrepository.com/artifact/com.rabbitmq/amqp-client
+	compile group: 'com.rabbitmq', name: 'amqp-client', version: '5.7.2'
+
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // https://mvnrepository.com/artifact/org.apache.qpid/qpid-broker
+    testCompile group: 'org.apache.qpid', name: 'qpid-broker', version: '7.1.0'
+
+}
